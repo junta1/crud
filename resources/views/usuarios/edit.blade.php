@@ -1,5 +1,6 @@
 <H3>Edição de Usuário</H3>
 
+{{--Identificando os erros na tela--}}
 @if (count($errors) > 0)
     <div class="alert alert-danger">
         <ul>
@@ -17,7 +18,7 @@
 {{ Form::model($usuarios,['method' => 'PATCH','route'=>['usuarios.update',$usuarios->id]]) }}
     {{ Form::label('nome', 'Nome') }}
     {{ Form::text('nome') }}
-    {{ $errors->first('nome') }}
+    {{--{{ $errors->first('nome','##Campo Nome Obrigatorio##') }}--}}
     
     {{ Form::label('sobrenome', 'Sobrenome') }}
     {{ Form::text('sobrenome') }}

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Usuario\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\UsuariosModel;
+use App\Usuario\Model\UsuariosModel;
 use Illuminate\Support\Facades\Input;
+use App\Http\Controllers\Controller;
 
 class UsuariosController extends Controller {
 
@@ -98,7 +99,11 @@ class UsuariosController extends Controller {
         ];
             
             $message = [
-                'required' => 'Campo obrigatório'
+                'nome.required' => 'Campo nome obrigatório',
+                'sobrenome.required' => 'Campo sobrenome obrigatório',
+                'email.required' => 'Campo e-mail obrigatório',
+                'usuario.required' => 'Campo usuario obrigatório',
+                'senha.required' => 'Campo senha obrigatório'
             ];
         
         $this->validate($request,$rules, $message);
