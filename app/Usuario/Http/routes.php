@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::resource('usuarios', '\App\Usuario\Http\Controllers\UsuariosController');
+Route::resource('api/usuarios', '\App\Usuario\Http\Controllers\ApiUsuariosController');
 //Route::resource('api/usuarios', '\App\Usuario\Http\Controllers\UsuariosController');
 //Route::resource('cadastrar','\App\Usuario\Http\Controllers\UsuariosController@create');
 //Route::get('editar/{id}',['as' => 'usuarios.edit', 'uses'=> '\App\Usuario\Http\Controllers\UsuariosController@edit']);

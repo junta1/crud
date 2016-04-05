@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\Controller;
 use App\Usuario\Http\Requests\UsuarioValidacao;
 
-class UsuariosController extends Controller {
+class ApiUsuariosController extends Controller {
 
     /**
      * Display a listing of the resource.
@@ -29,7 +29,7 @@ class UsuariosController extends Controller {
         //Variavel que recebe o diretorio do model
 //       $usuarios = \App\Models\UsuariosModel::all();
         $usuarios = $this->usuario->all();
-        return view('usuarios.index', compact('usuarios'));
+        return response()->json($usuarios);
     }
 
     /**

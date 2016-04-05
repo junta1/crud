@@ -35,6 +35,8 @@
 
 {{ Form::submit('Atualizar') }}
 
+{{ Form::hidden('id', $usuarios->id) }}
+
 {{ Form::close() }}
 
 
