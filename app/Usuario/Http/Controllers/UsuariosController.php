@@ -39,13 +39,23 @@ class UsuariosController extends Controller {
     public function store(Request $request) {
 //        \App\Models\UsuariosModel::create([ 
         //Validando campos
-        $this->validate($request, [
+        $rules = [
             'nome' => 'required|max:255',
             'sobrenome' => 'required|max:255',
             'email' => 'required|unique:usuarios|max:255|email',
             'usuario' => 'required|unique:usuarios|max:20',
             'senha' => 'required|max:32',
-        ]);
+        ];
+
+        $message = [
+            'nome.required' => 'Campo nome obrigatório',
+            'sobrenome.required' => 'Campo sobrenome obrigatório',
+            'email.required' => 'Campo e-mail obrigatório',
+            'usuario.required' => 'Campo usuario obrigatório',
+            'senha.required' => 'Campo senha obrigatório'
+        ];
+
+        $this->validate($request, $rules, $message);
 
         UsuariosModel::create([
             'nome' => $request['nome'],
@@ -56,7 +66,7 @@ class UsuariosController extends Controller {
         ]);
 
         //Redireciona após a execuçã do inserir
-        return redirect()->action('UsuariosController@index');
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -90,36 +100,36 @@ class UsuariosController extends Controller {
      * @return Response
      */
     public function update($id, Request $request) {
-        
+
         $rules = [
             'nome' => 'required|max:255',
             'sobrenome' => 'required|max:255',
             'email' => "required|unique:usuarios,email,{$id}|max:255|email",
             'usuario' => "required|unique:usuarios,usuario,{$id}|max:20'"
         ];
-            
-            $message = [
-                'nome.required' => 'Campo nome obrigatório',
-                'sobrenome.required' => 'Campo sobrenome obrigatório',
-                'email.required' => 'Campo e-mail obrigatório',
-                'usuario.required' => 'Campo usuario obrigatório',
-                'senha.required' => 'Campo senha obrigatório'
-            ];
-        
-        $this->validate($request,$rules, $message);
-         
+
+        $message = [
+            'nome.required' => 'Campo nome obrigatório',
+            'sobrenome.required' => 'Campo sobrenome obrigatório',
+            'email.required' => 'Campo e-mail obrigatório',
+            'usuario.required' => 'Campo usuario obrigatório',
+            'senha.required' => 'Campo senha obrigatório'
+        ];
+
+        $this->validate($request, $rules, $message);
+
         $usuarios = UsuariosModel::find($id);
         $usuarios->nome = Input::get('nome');
         $usuarios->sobrenome = Input::get('sobrenome');
         $usuarios->email = Input::get('email');
         $usuarios->usuario = Input::get('usuario');
-        if(Input::get('senha') != null) {
-            $usuarios->senha = Input::get('senha');    
+        if (Input::get('senha') != null) {
+            $usuarios->senha = Input::get('senha');
         }
-        
+
         $usuarios->save();
 
-        return redirect()->action('UsuariosController@index');
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -130,7 +140,7 @@ class UsuariosController extends Controller {
      */
     public function destroy($id) {
         $usuarios = UsuariosModel::destroy($id);
-        return redirect()->action('UsuariosController@index');
+        return redirect()->route('usuarios.index');
     }
 
 }

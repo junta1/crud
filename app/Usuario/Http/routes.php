@@ -11,12 +11,13 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::resource('/', '\App\Usuario\Http\Controllers\UsuariosController');
-Route::resource('cadastrar','\App\Usuario\Http\Controllers\UsuariosController@create');
-Route::get('editar/{id}',['as' => 'usuarios.edit', 'uses'=> '\App\Usuario\Http\Controllers\UsuariosController@edit']);
-Route::patch('update/{id}',['as' => 'usuarios.update','uses' => 'UsuariosController@update']);
-Route::delete('destroy/{id}',['as' => 'usuarios.destroy','uses' => 'UsuariosController@destroy']);
+Route::resource('usuarios', '\App\Usuario\Http\Controllers\UsuariosController');
+//Route::resource('api/usuarios', '\App\Usuario\Http\Controllers\UsuariosController');
+//Route::resource('cadastrar','\App\Usuario\Http\Controllers\UsuariosController@create');
+//Route::get('editar/{id}',['as' => 'usuarios.edit', 'uses'=> '\App\Usuario\Http\Controllers\UsuariosController@edit']);
+//Route::patch('update/{id}',['as' => 'usuarios.update','uses' => '\App\Usuario\Http\Controllers\UsuariosController@update']);
+//Route::delete('destroy/{id}',['as' => 'usuarios.destroy','uses' => '\App\Usuario\Http\Controllers\UsuariosController@destroy']);

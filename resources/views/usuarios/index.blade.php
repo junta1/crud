@@ -1,5 +1,5 @@
 <?php
-echo link_to('cadastrar', $title = 'Clique para Cadastrar Usuário', $attributes = [], $secure = null);
+echo link_to_route('usuarios.create', $title = 'Clique para Cadastrar Usuário');
 ?>
 
 <table border='1'>
@@ -13,7 +13,7 @@ echo link_to('cadastrar', $title = 'Clique para Cadastrar Usuário', $attributes
     <th colspan="1">Ação</th> 
 </thead>
 
-    @foreach ($usuarios as $usuario)
+@foreach ($usuarios as $usuario)
 <tbody>
     <tr>
         <td>{{$usuario->nome}}</td>
@@ -22,13 +22,11 @@ echo link_to('cadastrar', $title = 'Clique para Cadastrar Usuário', $attributes
         <td>{{$usuario->usuario}}</td>
         <td>{{$usuario->created_at}}</td>
         <td>{{$usuario->updated_at}}</td>
-        
         <!--É necessário uma rotas nomeada-->
-        <td>{{link_to_route('usuarios.edit', $title = 'Editar', $usuario->id, $attributes = []) }}</td>
-        
+        <td>{{ link_to_route('usuarios.edit', $title = 'Editar', $usuario->id, $attributes = []) }}</td>
     </tr>
 </tbody>
-    @endforeach
+@endforeach
 
 </table>
 
